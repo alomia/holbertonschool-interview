@@ -8,10 +8,12 @@ def canUnlockAll(boxes):
     """ solve the problem of
     loockboxes """
     unlocked = [0]
-    for box_id, box in enumerate(boxes, 1):
-        for key in box:
-            if key < len(boxes) and key not in unlocked and key != box_id:
-                unlocked.append(key)
+
+    for key in unlocked:
+        for item in boxes[key]:
+            if item not in unlocked and item < len(boxes):
+                unlocked.append(item)
+
     if len(unlocked) == len(boxes):
         return True
     return False
