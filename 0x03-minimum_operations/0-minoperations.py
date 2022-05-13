@@ -10,14 +10,11 @@ def minOperations(n):
     needed to result in exactly n H characters in the file.
     """
 
-    if type(n) is not int:
-        return 0
-
-    totalOperations = 0
-
-    for i in range(2, n + 1):
-        while n % i == 0:
-            totalOperations += i
-            n = n // i
-
-    return totalOperations
+    minOper = 0
+    div = 2
+    while isinstance(n, int) and n > 1:
+        while n % div:
+            div += 1
+        minOper += div
+        n = int(n / div)
+    return minOper
