@@ -10,7 +10,7 @@ def minOperations(n):
     needed to result in exactly n H characters in the file.
     """
 
-    if n < 2 or type(n) is not int:
+    if type(n) is not int:
         return 0
 
     totalOperations = 0
