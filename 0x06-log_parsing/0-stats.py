@@ -11,6 +11,7 @@ size = 0
 
 def print_info():
     """print_info method print needed info
+
     Args:
         codes (dict): code status
         size (int): size of files
@@ -19,7 +20,6 @@ def print_info():
     for key, val in sorted(codes.items()):
         if val > 0:
             print("{}: {}".format(key, val))
-
 
 if __name__ == '__main__':
     try:
