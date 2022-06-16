@@ -7,31 +7,12 @@
  */
 int is_palindrome(unsigned long n)
 {
-	int long nCopy = n;
-	int long nCopy2 = n;
-	int long divider = 1;
-	int palindrome = 1;
+	unsigned long aux = 0, n1 = n;
 
-	while (nCopy2 > 9)
+	while (n1)
 	{
-		nCopy2 /= 10;
-		divider *= 10;
+		aux = (aux * 10) + (n1 % 10);
+		n1 /= 10;
 	}
-
-	while (n > 9 && palindrome != 0)
-	{
-		int digit_1 = n / divider;
-		int digit_2 = nCopy % 10;
-
-		if (digit_1 == digit_2)
-		{
-			n %= divider;
-			nCopy /= 10;
-			divider = divider / 10;
-		}
-		else
-			palindrome = 0;
-	}
-
-	return (palindrome);
+	return (n == aux ? 1 : 0);
 }
