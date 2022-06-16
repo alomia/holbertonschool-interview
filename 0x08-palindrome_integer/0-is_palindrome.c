@@ -3,7 +3,6 @@
  * is_palindrome - checks whether or not a
  * given unsigned integer is a palindrome.
  * @n: number
- *
  * Return: palindrome
  */
 int is_palindrome(unsigned long n)
