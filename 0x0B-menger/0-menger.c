@@ -1,38 +1,39 @@
 #include "menger.h"
 
 /**
- * draw_blank_in_pow3 - It checks if the current cell is in the
- * middle of a 3x3 square, and if it is, it prints a space,
- * otherwise it prints a hash
- *
- * @x: the x coordinate of the current cell
- * @y: the y coordinate of the point
- */
-void draw_blank_in_pow3(int x, int y)
-{
-	int is_space = 0, tmpx, tmpy;
-
-	for (tmpx = x, tmpy = y, is_space = 0; tmpx || tmpy; tmpx /= 3, tmpy /= 3)
-		if (tmpx % 3 == 1 && tmpy % 3 == 1)
-			is_space = 1;
-	printf("%c", !is_space ? '#' : ' ');
-}
-
-/**
- * It prints a blank space if the sum of the coordinates is divisible by 3,
- * otherwise it prints a hash
- *
- * @param level the level of the sponge to draw
+ * menger - draws a 2D menger sponge
+ * @level: number of levels to draw
+ * Return: nothing
  */
 void menger(int level)
 {
-	int x = 0, y = 0, s_sponge = pow(3, level);
+	int col, row, size;
 
-	for (x = 0; x < s_sponge; x++)
+	if (level < 0)
+		return;
+	size = pow(3, level);
+	for (col = 0; col < size; col++)
 	{
-		for (y = 0; y < s_sponge; y++)
-			draw_blank_in_pow3(x, y);
-		printf("\n");
+		for (row = 0; row < size; row++)
+			printf("%c", hash_space(col, row));
+		putchar(10);
 	}
 }
 
+
+/**
+ * hash_space - gets a character
+ * @col: column
+ * @row: row
+ * Return: '#' or ' '
+ */
+char hash_space(int col, int row)
+{
+	while (col && row)
+	{
+		if (col % 3 == 1 && row % 3 == 1)
+			return (' ');
+		col /= 3, row /= 3;
+	}
+	return ('#');
+}
